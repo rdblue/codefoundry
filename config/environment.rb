@@ -31,7 +31,7 @@ Rails::Initializer.run do |config|
   # uses harsh plug-in, which depends on the ultraviolet gem, which depends on
   # Oniguruma (install from source), see NOTES
   config.gem 'oniguruma' # cause rake gems:install to fail unless onig .so is installed
-  config.gem 'ultraviolet'
+  config.gem 'ultraviolet', :lib => 'uv'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
