@@ -15,12 +15,23 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'grit'
+
+  # repository access gems
+  config.gem 'grit' # git
+  # config.gem 'amp' # mercurial
+
+  # search and indexing gems
+  # config.gem 'ferret'
+  # config.gem 'acts_as_ferret'
+
+  # text formatting
   config.gem 'marker'
+
+  # syntax highlighting
+  # uses harsh plug-in, which depends on the ultraviolet gem, which depends on
+  # Oniguruma (install from source), see NOTES
+  config.gem 'oniguruma' # cause rake gems:install to fail unless onig .so is installed
+  config.gem 'ultraviolet'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

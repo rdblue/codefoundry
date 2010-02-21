@@ -1,0 +1,15 @@
+== Syntax Highlighting ==
+
+Syntax highlighting uses harsh, which depends on ultraviolet (gem) and
+Oniguruma.  Oniguruma is a C regex library that needs to be installed from
+source.  It can be found here:
+* http://www.geocities.jp/kosako3/oniguruma/archive/onig-5.9.2.tar.gz
+
+environment.rb sets config.gem lines for oniguruma and ultraviolet.  The
+oniguruma gem is required so that `rake gems:install` will fail unless the
+oniguruma C library is installed.  Ultraviolet probably would as well, but it's
+more clear to fail because of oniguruma rather than ultraviolet.
+
+Harsh is managed as a git sub-module in vendor/plugins.  See
+[http://woss.name/blog/2008/4/9/using-git-submodules-to-track-plugins.html this
+page] for more information on submodules and plugins.
