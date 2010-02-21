@@ -10,10 +10,5 @@ oniguruma gem is required so that `rake gems:install` will fail unless the
 oniguruma C library is installed.  Ultraviolet probably would as well, but it's
 more clear to fail because of oniguruma rather than ultraviolet.
 
-Harsh is managed as a git sub-module in vendor/plugins.  See
-[http://woss.name/blog/2008/4/9/using-git-submodules-to-track-plugins.html this
-page] for more information on submodules and plugins.  In short, to set up
-submodule plugins after an initial clone or after a new submodule is added,
-run:
- $ git submodule init
- $ git submodule update
+Harsh is a plugin, installed with:
+ $ script/plugin install git://github.com/michaeledgar/harsh.git
