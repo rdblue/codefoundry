@@ -1,4 +1,3 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def marker_to_html( markup, options = {} )
     # Marker can't handle windows newlines and does not do sanitization so we
