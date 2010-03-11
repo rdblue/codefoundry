@@ -8,3 +8,9 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 Rails::Application.load_tasks
+
+begin
+  require 'delayed/tasks'
+rescue LoadError
+  STDERR.puts "Run `bundle install` to install delayed_job"
+end
