@@ -1,4 +1,23 @@
 Codefoundry::Application.routes.draw do |map|
+
+  resources :users do
+    resources :repositories do
+      collection do
+        get commits
+      end
+
+      member do
+        post commit
+        put stage
+      end
+    end
+  end
+
+  resources :projects do
+    resources :repositories do
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
