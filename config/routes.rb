@@ -1,22 +1,74 @@
 Codefoundry::Application.routes.draw do |map|
 
-  resources :users do
-    resources :repositories do
-      collection do
-        get commits
-      end
+  # global pages
+  root :to => 'welcome#dashboard'
+  get 'about', :to => 'welcome#about', :as => 'about'
+  get 'search', :to => 'welcome#search', :as => 'search'
+  get 'faq', :to => 'welcome#faq', :as => 'faq'
 
-      member do
-        post commit
-        put stage
-      end
+  # the current user's account page
+  resource :account
+
+  # route to both the git and svn handlers.  the handlers will be
+  # responsible for rendering errors if the request cannot be served (e.g.,
+  # if git is requested for a svn repository)
+  match 'git', :to => GitHandler
+  match 'svn', :to => SvnHandler
+
+  # repository controller; accessed through both :users and :projects so we
+  # build the route in a Proc and pass it to resources later
+  repository_routes = Proc.new do
+    member do
+      # redirection routes
+      get :issues # redirects to issue tracker
+      get :docs   # redirects to hosted documentation
+      get :live   # redirects to live site
+
+      # revisions and commits are synonymous, but try to use the right one for
+      # the right repository
+      get :commits
+      get :revisions
+
+      resources :releases
+
+      # followers?
+
+      # used to perform RESTful commits with tarballs or multiple file uploads
+      post :commit
+
+      # :tag is used for a revision, commit, branch, or tag
+
+      # shows a change set
+      get ':tag/changes', :to => 'repositories#changes'
+
+      # all repository access should go through show, rather than having a
+      # different controller for each access type (blob, folder, commit, etc.);
+      # the correct handler will be called inside the RepositoriesController
+      get ':tag/*path', :to => 'repositories#show'
     end
+  end
+
+  resources :users do
+    resources( :repositories, &repository_routes )
+  end
+
+  # use /u/... as shorthand for /users/... routes
+  resources :users, :as => 'u' do
+    resources( :repositories, &repository_routes )
   end
 
   resources :projects do
-    resources :repositories do
-    end
+    resources( :repositories, &repository_routes )
   end
+
+  # use /p/... as shorthand for /projects/... routes
+  resources :projects, :as => 'p' do
+    resources( :repositories, &repository_routes )
+  end
+
+  # other pages default to the dispatch controller which will figure out what
+  # the user wants
+  get '*path', :to => 'dispatch#go'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
