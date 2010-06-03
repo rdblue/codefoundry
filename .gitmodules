@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/harsh"]
 	path = vendor/plugins/harsh
 	url = git://github.com/michaeledgar/harsh.git
+[submodule "lib/grack"]
+	path = lib/grack
+	url = http://github.com/schacon/grack.git
