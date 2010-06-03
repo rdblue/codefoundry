@@ -12,8 +12,14 @@ Codefoundry::Application.routes.draw do |map|
   # route to both the git and svn handlers.  the handlers will be
   # responsible for rendering errors if the request cannot be served (e.g.,
   # if git is requested for a svn repository)
-  match 'git', :to => GitHandler
-  match 'svn', :to => SvnHandler
+  match 'git(/*other_params)' => GitHandler.new(
+      :project_root => '/home/blue/tmp',
+      :git_path => '/usr/bin/git',
+      :upload_pack => true,
+      :receive_pack => true
+    ), :anchor => false
+    
+  match 'svn' => SvnHandler.new, :anchor => false
 
   # repository controller; accessed through both :users and :projects so we
   # build the route in a Proc and pass it to resources later
