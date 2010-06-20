@@ -1,0 +1,19 @@
+<% title "Log in" %>
+
+<h1>Log in to Codefoundry</h1>
+
+<%= form_for(@user_session, :url => session_path ) do |f| %>  
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username %>  
+  </p>
+  
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>  
+  </p>
+  
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>  

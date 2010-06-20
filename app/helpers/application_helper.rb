@@ -14,4 +14,8 @@ module ApplicationHelper
     # do the simplest thing for now
     "<pre>text</pre>"
   end
+
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
 end

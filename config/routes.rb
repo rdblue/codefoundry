@@ -1,7 +1,7 @@
 Codefoundry::Application.routes.draw do |map|
 
   # global pages
-  root :to => 'welcome#dashboard'
+  root :to => 'welcome#index'
   get 'about', :to => 'welcome#about', :as => 'about'
   get 'search', :to => 'welcome#search', :as => 'search'
   get 'faq', :to => 'welcome#faq', :as => 'faq'
@@ -9,11 +9,19 @@ Codefoundry::Application.routes.draw do |map|
   # the current user's account page
   resource :account
 
+  # login/logout/signup
+  get 'login', :to => 'user_sessions#new' 
+  get 'logout', :to => 'user_sessions#destroy'
+  post 'session', :to => 'user_sessions#create'
+  get 'signup', :to => 'users#new'
+
   # route to both the git and svn handlers.  the handlers will be
   # responsible for rendering errors if the request cannot be served (e.g.,
   # if git is requested for a svn repository)
-  match 'git(/*params)' => GitHandler.new, :anchor => false
-  match 'svn(/*params)' => SvnHandler.new, :anchor => false
+  # FIXME: these trigger "ERROR NameError: uninitialized constant Net::ProtoAuthError"
+  # for me - commenting out until the bugs are worked out
+  #match 'git(/*params)' => GitHandler.new, :anchor => false
+  #match 'svn(/*params)' => SvnHandler.new, :anchor => false
 
   # repository controller; accessed through both :users and :projects so we
   # build the route in a Proc and pass it to resources later
@@ -68,7 +76,8 @@ Codefoundry::Application.routes.draw do |map|
 
   # other pages default to the dispatch controller which will figure out what
   # the user wants
-  get '*path', :to => 'dispatch#go'
+  # FIXME: commenting out until dispatch controller exists
+  #get '*path', :to => 'dispatch#go'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
