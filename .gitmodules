@@ -4,3 +4,6 @@
 [submodule "lib/grack"]
 	path = lib/grack
 	url = http://github.com/schacon/grack.git
+[submodule "vendor/plugins/rack-streaming-proxy"]
+	path = vendor/plugins/rack-streaming-proxy
+	url = http://github.com/aniero/rack-streaming-proxy.git
