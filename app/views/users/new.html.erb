@@ -1,5 +1,39 @@
-<h1>New user</h1>
+<h1>Signup for an Account</h1>
 
-<%= render 'form' %>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited signup:</h2>
 
-<%= link_to 'Back', users_path %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :username %><br/>
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, "Confirm password" %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit 'Signup' %>
+  </div>
+<% end %>
