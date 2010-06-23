@@ -41,9 +41,9 @@
     </div>
 
     <div id="sidebar" class="span-6 last">
-      <%= content_for :pre_sidebar %>
-      <%= content_for :sidebar %>
-      <%= content_for :post_sidebar %>
+      <%= yield :pre_sidebar %>
+      <%= yield :sidebar %>
+      <%= yield :post_sidebar %>
     </div>
 
     <div id="footer" class="span-18">
