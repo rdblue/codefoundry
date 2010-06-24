@@ -1,11 +1,18 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+# Passwords are 'abc123'
+
+one:
+  username: abc
+  email: abc@abc.com
+  crypted_password: 602a145f70e86a7ff161e63e34f6a58803b6916d768324eeb52b5c610d1e6cd0fa5a998a504f98dcbf2b41de73360e53c64d4a93c4625384819fac37772989ed
+  password_salt: btQ1m2d4vTU-I0ifwZZk
+  persistence_token: 3228fe7ba5a739153100f881ff5c338c4401a5cfa6e85bac188003d3f7ee7c29051fd6236275a16ab52fc870949d66c8ae6ab6afb3d969117e321bc97f13562e
+  time_zone: Hawaii
+two:
+  username: abc2
+  email: abc2@abc.com
+  crypted_password: 6ba97ed9f3e867fd430e95885b91906e2bf6a8c6c0523c638313faf4b2ec2ca6deb40d33e7b7c7c593bd971d17105cee44b5808639afef5f5055464d2df81427
+  password_salt: ZlAFYz1UqFgZCgWSpbKw
+  persistence_token: b3dea09db3d56e2cd103c3f8355cd9b79bd9a57f8f48e4e54610d940a94f31b630061e665544126602c62841d8aae3914b0035452d14b3f87c7a4c4a7363afca
+  time_zone: Hawaii
