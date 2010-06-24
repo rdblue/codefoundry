@@ -1,0 +1,39 @@
+<h1>Editing account</h1>
+
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %>
+  </p>
+  
+  <p>
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %>
+  </p>
+  
+  <p>
+    <%= f.label :email, nil, :class => 'required' %><br/>
+    <%= f.text_field :email %>
+  </p>
+  
+  <p>
+    <%= f.label :time_zone %><br/>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit 'Update' %>
+  </div>
+<% end %>

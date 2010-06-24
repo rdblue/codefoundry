@@ -42,11 +42,11 @@
 
     <div id="sidebar" class="span-6 last">
       <%= yield :pre_sidebar %>
-      <%= yield :sidebar %>
+      <%= render 'context_menu' %>
       <%= yield :post_sidebar %>
     </div>
 
-    <div id="footer" class="span-18">
+    <div id="footer" class="span-18 prepend-top">
       <p>Enterprise source-code management</p>
     </div>
     <div id="sidebar-footer" class="span-6 last">
