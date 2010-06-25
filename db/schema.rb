@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624211631) do
+ActiveRecord::Schema.define(:version => 20100625213348) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(:version => 20100624211631) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "param"
   end
+
+  add_index "projects", ["param"], :name => "index_projects_on_param"
 
   create_table "repositories", :force => true do |t|
     t.string   "type"

@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: project one
+  summary: my first project
+  description: none
+  param: "project-one"
+  user_id: 1
+
+two:
+  name: project two
+  summary: my second project
+  description: none
+  param: "project-two"
+  user_id: 1
+
