@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
   layout "application"
   protect_from_forgery
   before_filter :set_time_zone
-  helper_method :current_user  
+  helper_method :current_user
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
     
-private  
+private
+  
+  def render_404
+    render :text => "We couldn't find that page..."
+  end
+
   def current_user_session  
     return @current_user_session if defined?(@current_user_session)  
     @current_user_session = UserSession.find  

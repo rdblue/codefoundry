@@ -1,3 +1,15 @@
+<h1><%= @user.username %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="span-9">
+<h2>Recent Activity</h2>
+</div>
+
+<div class="span-9 last">
+<h2>Repositories</h2>
+
+<% @user.repositories.limit(10).each do |repository| %>
+  <p><%= link_to repository.name, [@user, repository] %></p>
+<% end %>
+
+<%= link_to 'View all', [@user, :repositories] %>
+</div>
