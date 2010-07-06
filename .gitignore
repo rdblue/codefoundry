@@ -1,5 +1,6 @@
 vendor/cache/*
 config/database.yml
+config/settings.yml
 log/*.log
 db/*.sqlite3
 tmp/**/*
