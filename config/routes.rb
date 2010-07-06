@@ -20,7 +20,7 @@ Codefoundry::Application.routes.draw do |map|
   # if git is requested for a svn repository)
   # FIXME: these trigger "ERROR NameError: uninitialized constant Net::ProtoAuthError"
   # for me - commenting out until the bugs are worked out
-  match 'git(/*params)' => GitHandler.new, :anchor => false
+  #match 'git(/*params)' => GitHandler.new, :anchor => false
   #match 'svn(/*params)' => SvnHandler.new, :anchor => false
 
   # repository controller; accessed through both :users and :projects so we
