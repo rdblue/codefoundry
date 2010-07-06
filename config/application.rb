@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'ostruct'
+require 'yaml'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -42,5 +44,14 @@ module Codefoundry
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Application config, from config/settings.yml
+    # * http://kpumuk.info/ruby-on-rails/flexible-application-configuration-in-ruby-on-rails/
+    cattr_accessor :app_config
+    @@app_config = OpenStruct.new(
+        YAML.load_file(
+            File.join( Rails.root, 'config', 'settings.yml' )
+          )[Rails.env] || {}
+      )
   end
 end

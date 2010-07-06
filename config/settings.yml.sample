@@ -1,0 +1,14 @@
+development:
+  svn_prefix: /svn
+  svn_app_config:
+    host: dev
+    # port: 80
+    path_prefix: /svn
+  git_prefix: /git
+  git_app_config:
+    project_root: /home/blue/tmp/git
+    git_path: /usr/bin/git
+
+production:
+
+test:
