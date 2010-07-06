@@ -2,16 +2,14 @@ require 'rack'
 require 'grack/lib/git_http'
 
 class GitHandler
-  attr_accessor :app_config
-
   def initialize( app )
     @app = app
-    @app_config = app.app_config
 
-    @prefix = @app_config.git_prefix
+    settings = Codefoundry::Application.settings
+    @prefix = settings.git_prefix
     @config = {
-        :project_root => @app_config.git_app_config['project_root'],
-        :git_path => @app_config.git_app_config['git_path'],
+        :project_root => settings.git_app_config['project_root'],
+        :git_path => settings.git_app_config['git_path'],
         :upload_pack => true,
         :receive_pack => true
       }

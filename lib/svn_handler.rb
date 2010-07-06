@@ -8,18 +8,15 @@ require 'delta_v'
 require 'streaming_proxy'
 
 class SvnHandler
-  attr_accessor :app_config
-
   def initialize( app )
-    @app_config = app.app_config
-
-    @prefix = @app_config.svn_prefix
+    settings = Codefoundry::Application.settings
+    @prefix = settings.svn_prefix
     @config = {
-        :path_prefix => @app_config.svn_app_config['path_prefix'],
-        :host => @app_config.svn_app_config['host'],
-        :port => @app_config.svn_app_config['port'] || 80,
+        :path_prefix => settings.svn_app_config['path_prefix'],
+        :host => settings.svn_app_config['host'],
+        :port => settings.svn_app_config['port'] || 80,
         :all_headers => true # Must be on to forward SVN headers correctly
-      }.merge( @app_config.svn_app_config )
+      }
 
     url_start = "http://#{@config[:host]}:#{@config[:port]}"
 
