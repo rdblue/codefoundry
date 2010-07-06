@@ -8,17 +8,34 @@ require 'delta_v'
 require 'streaming_proxy'
 
 class SvnHandler
+  attr_accessor :app_config
+
   def initialize( app )
-    options = {
-        :host => 'dev',
-        :port => 80,
-        :all_headers => true
-      }
-    @svn_provider = StreamingProxy.new( app, options ) do |req|
+    @app_config = app.app_config
+
+    @prefix = @app_config.svn_prefix
+    @config = {
+        :path_prefix => @app_config.svn_app_config['path_prefix'],
+        :host => @app_config.svn_app_config['host'],
+        :port => @app_config.svn_app_config['port'] || 80,
+        :all_headers => true # Must be on to forward SVN headers correctly
+      }.merge( @app_config.svn_app_config )
+
+    url_start = "http://#{@config[:host]}:#{@config[:port]}"
+
+    # strip off the beginning/ending '/'
+    if @config[:path_prefix]
+      unless @config[:path_prefix].starts_with? '/'
+        @config[:path_prefix] = "/#{@config[:path_prefix]}"
+      end
+      @config[:path_prefix].chomp!('/')
+    end
+
+    @svn_provider = StreamingProxy.new( app, @config ) do |req|
       # right now, we assume SVN is mounted at /svn/
-      path_arr = req.path.split('/')
-      if path_arr[1] == 'svn'
-        "http://#{options[:host]}:#{options[:port]}#{req.path}"
+      if req.path.starts_with? @prefix
+        # construct the correct URL
+        "#{url_start}#{@config[:path_prefix]}/#{req.path.sub(/^#{@prefix}\/?/, '')}"
       else
         nil
       end
@@ -30,6 +47,9 @@ class SvnHandler
     # Content-Type header, so make sure if the body exists, the content type
     # set to 'text/xml'.  Otherwise, the body isn't forwarded by the proxy.
     env['CONTENT_TYPE'] ||= 'text/xml' if env['rack.input'].length > 0
+
+    # the provider already has the logic to forward any requests that don't
+    # start with the svn_prefix to the rails app.
     @svn_provider.call( env )
   end
 end
