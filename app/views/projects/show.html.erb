@@ -1,6 +1,8 @@
 <h1><%= @project.name %></h1>
 <p><%= @project.summary %></p>
 
+<p><%= link_to "#{@project.repositories.size} repositories", [@project, :repositories] %></p>
+
 <p><%= raw(marker_to_html(@project.description)) %></p>
 
 <% if current_user %>

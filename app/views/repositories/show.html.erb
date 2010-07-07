@@ -1,0 +1,2 @@
+<h1><%= link_to @owner.to_param, @owner %> / <%= link_to @repository.name, polymorphic_path([@owner, @repository]) %></h1>
+

@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   name: project one
   summary: my first project
   description: none
@@ -8,6 +9,7 @@ one:
   user_id: 1
 
 two:
+  id: 2
   name: project two
   summary: my second project
   description: none

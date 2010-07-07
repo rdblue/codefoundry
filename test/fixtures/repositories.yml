@@ -1,15 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  type: MyString
-  path: MyString
-  user_id: 1
+  id: 1
+  name: repository one
+  param: repository-one
+  #user_id: nil
   project_id: 1
   size: 1
+  scm: 1
 
 two:
-  type: MyString
-  path: MyString
-  user_id: 1
+  id: 2
+  name: repository two
+  param: repository-two
+  #user_id: nil
   project_id: 1
   size: 1
+  scm: 1

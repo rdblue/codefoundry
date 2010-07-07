@@ -1,0 +1,33 @@
+<%= form_for([@owner, @repository]) do |f| %>
+  <% if @repository.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@repository.errors.count, "error") %> prohibited this repository from being saved:</h2>
+
+      <ul>
+      <% @repository.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :summary %><br/>
+    <%= f.text_field :summary %>
+  </p>
+
+  <p>
+    <%= f.label :scm, 'SCM' %><br/>
+    <%= f.select :scm, @repository.available_scms %>
+  </p>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
