@@ -1,5 +1,5 @@
-Codefoundry::Application.routes.draw do |map|
-
+Codefoundry::Application.routes.draw do
+  
   # global pages
   root :to => 'welcome#index'
   get 'about', :to => 'welcome#about', :as => 'about'
@@ -96,12 +96,12 @@ Codefoundry::Application.routes.draw do |map|
   # Sample resource route with options:
   #   resources :products do
   #     member do
-  #       get :short
-  #       post :toggle
+  #       get 'short'
+  #       post 'toggle'
   #     end
   #
   #     collection do
-  #       get :sold
+  #       get 'sold'
   #     end
   #   end
 
@@ -115,7 +115,7 @@ Codefoundry::Application.routes.draw do |map|
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get :recent, :on => :collection
+  #       get 'recent', :on => :collection
   #     end
   #   end
 
