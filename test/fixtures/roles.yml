@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Administrator
+
+two:
+  name: Comitter
+
+three:
+  name: Tester
+
+four:
+  name: Reviewer
