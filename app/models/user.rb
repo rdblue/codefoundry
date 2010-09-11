@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :repositories
+  has_many :project_privileges
+  has_many :projects, :through => :project_privileges
   acts_as_authentic
   
   default_scope order(:username)

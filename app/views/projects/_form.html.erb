@@ -28,6 +28,25 @@
     <span class="quiet">Full project description (wiki markup accepted)</span>
   </p>
 
+  <% if !@project.new_record? %>
+  <h2>Privileges (<%= link_to 'edit', project_privileges_path(@project) %>)</h2>
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Access</th>
+      <th></th>
+    </tr>
+
+  <% @project.privileges.each do |privilege| %>
+    <tr>
+      <td><%= privilege.user.username %></td>
+      <td><%= privilege.role.name %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  </table>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

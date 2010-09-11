@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
   has_many :repositories
+  has_many :project_privileges
+  has_many :users, :through => :project_privileges
+  alias_method :privileges, :project_privileges
   belongs_to :user
   
   default_scope order(:name)
@@ -27,4 +30,10 @@ class Project < ActiveRecord::Base
     self.param = to_param
   end
   
+  # Is this user an owner?
+  # TODO: add privilege fields and check those instead
+  def owner?(arg)
+    return true if users.include? arg
+    return false
+  end
 end

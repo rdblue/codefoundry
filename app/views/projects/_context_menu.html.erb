@@ -1,3 +1,15 @@
+<% if @project and !@project.new_record? %>
+<h4>Navigation</h4>
 <ul>
+    <li><%= link_to 'Project Information', project_path(@project) %></li>
+    <li><%= link_to 'Repositories', project_repositories_path(@project) %></li>
+</ul>
+<% end %>
+
+<h4>Administration</h4>
+<ul>
+  <% if @project and !@project.new_record? and @project.owner? current_user %>
+    <li><%= link_to 'Edit project', edit_project_path(@project) %></li>
+  <% end %>
   <li><%= link_to 'New project', new_project_path %></li>
 </ul>

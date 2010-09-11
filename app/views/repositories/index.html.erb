@@ -13,6 +13,7 @@
     <td><%= repository.summary %></td>
     <td>
       <%= link_to 'Edit', polymorphic_path([@owner, repository], :action => :edit ) %>
+      <%= link_to 'Delete', polymorphic_path([@owner, repository]), :method => :delete, :confirm => 'Are you sure?' %>
     </td>
   </tr>
     

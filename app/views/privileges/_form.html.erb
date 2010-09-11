@@ -1,0 +1,32 @@
+<%= form_for([@privilegable, @privilege]) do |f| %>
+  <% if @privilege.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@privilege.errors.count, "error") %> prohibited this privilege from being saved:</h2>
+
+      <ul>
+      <% @privilege.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <% if @privilege.new_record? %>
+      <%= f.label :user_id, 'User' %><br/>
+      <%= f.select :user_id, @users.collect{|u| [u.username, u.id] } %>
+    <% else %>
+      <%= f.label :user %><br/>
+      <%= @privilege.user.username %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.label :role_id, 'Role' %><br/>
+    <%= f.select :role_id, @roles.collect{|r| [r.name, r.id]} %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<h1><%= @privilegable.class %> privileges</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Access</th>
+    <th></th>
+  </tr>
+
+<% @privileges.each do |privilege| %>
+  <tr>
+    <td><%= privilege.user.username %></td>
+    <td><%= privilege.role.name %></td>
+    
+    <td>
+      <%= link_to 'Edit', polymorphic_path([@privilegable, privilege], :action => :edit) %> -
+      <%= link_to 'Delete', polymorphic_path([@privilegable, privilege]), :method => :delete, :confirm => 'Are you sure?' %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />

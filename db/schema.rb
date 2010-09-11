@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20100906144357) do
   end
 
   create_table "project_privileges", :force => true do |t|
-    t.integer  "privilege_id"
+    t.integer  "role_id"
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at"

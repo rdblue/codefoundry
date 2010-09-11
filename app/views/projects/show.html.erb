@@ -4,11 +4,3 @@
 <p><%= link_to "#{@project.repositories.size} repositories", [@project, :repositories] %></p>
 
 <p><%= raw(marker_to_html(@project.description)) %></p>
-
-<% if current_user %>
-  <% content_for :pre_sidebar do %>
-    <ul>
-      <li><%= link_to 'Edit project', edit_project_path(@project) %></li>
-    </ul>
-  <% end %>
-<% end %>

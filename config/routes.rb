@@ -67,11 +67,13 @@ Codefoundry::Application.routes.draw do
 
   resources :projects do
     resources( :repositories, &repository_routes )
+    resources( :privileges )
   end
 
   # use /p/... as shorthand for /projects/... routes
   resources :projects, :as => 'p' do
     resources( :repositories, &repository_routes )
+    resources( :privileges )
   end
 
   # other pages default to the dispatch controller which will figure out what
