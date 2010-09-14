@@ -1,0 +1,13 @@
+<div class="span-9 last append-bottom">
+  <div class="span-2">
+    <%= link_to(image_tag('project.png', :class => 'double_border'), project_path(project)) %>
+    <%# project.image_location %>
+  </div>
+
+  <div class="span-7 last">
+    <strong><%= link_to project.name, project_path(project) %></strong>
+    <p><%= project.summary %></p>
+  </div>
+</div>
+
+<hr style="width: 90%"/>

@@ -5,6 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= [yield(:title), "Codefoundry"].reject{|item| item.blank? }.join(" - ") %></title>
+  <%= stylesheet_link_tag 'application', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'screen', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'print', :media => 'print' %>
   <!-- [if lt IE 8]><%= stylesheet_link_tag 'ie', :media => 'screen, projection' %><![endif]-->

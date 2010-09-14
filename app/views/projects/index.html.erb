@@ -1,17 +1,4 @@
 <h1>Projects</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Summary</th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.name, project %></td>
-    <td><%= project.summary %></td>
-  </tr>
-<% end %>
-</table>
-
+<%= render :partial => @projects %>
 <br />

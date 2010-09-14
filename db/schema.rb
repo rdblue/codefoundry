@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100906144357) do
+ActiveRecord::Schema.define(:version => 20100914172144) do
 
   create_table "privs", :force => true do |t|
     t.string   "name"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(:version => 20100906144357) do
     t.string   "name"
     t.string   "summary"
     t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "param"
+    t.integer  "hits",        :default => 0
   end
 
   add_index "projects", ["param"], :name => "index_projects_on_param"

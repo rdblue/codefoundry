@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   
   default_scope order(:name)
   scope :by_param_scope, lambda { |param| where(:param => param)}
+  scope :newest, lambda { with_exclusive_scope {order('created_at DESC')} }
+  scope :by_hits, lambda { with_exclusive_scope {order('hits DESC')} }
 
   validates_presence_of :name
   validates_uniqueness_of :param

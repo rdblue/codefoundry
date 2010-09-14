@@ -4,4 +4,15 @@
 you to easily utilize revision control in your business and other projects.
 </p>
 
+<div class="span-9">
+<h2>Popular</h2>
+<%= render :partial => @popular_projects %>
+
+</div>
+
+<div class="span-9 last">
+<h2>New</h2>
+<%= render :partial => @new_projects %>
+</div>
+
 <h2><%= link_to 'Browse projects ->', projects_path %></h2>
