@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= form_for(@project, :html => { :multipart => true }) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -29,25 +29,39 @@
   </p>
 
   <% if !@project.new_record? %>
-  <h2>Privileges (<%= link_to 'edit', project_privileges_path(@project) %>)</h2>
-  <table>
-    <tr>
-      <th>Username</th>
-      <th>Access</th>
-      <th></th>
-    </tr>
+  <p>
+    <p><strong>Current Avatar:</strong><br/>
+    <%= avatar_thumb(@project.avatar) %></p>
+  </p>
+  <% end %>
 
-  <% @project.privileges.each do |privilege| %>
-    <tr>
-      <td><%= privilege.user.username %></td>
-      <td><%= privilege.role.name %></td>
-      <td></td>
-    </tr>
-  <% end %>
-  </table>
-  <% end %>
+  <p>
+    <%= f.label :avatar, 'Upload an avatar' %><br/>
+    <%= f.file_field :avatar %>
+  </p>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<% if !@project.new_record? %>
+<h2>Privileges (<%= link_to 'edit', project_privileges_path(@project) %>)</h2>
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Access</th>
+    <th></th>
+  </tr>
+
+<% @project.privileges.each do |privilege| %>
+  <tr>
+    <td><%= privilege.user.username %></td>
+    <td><%= privilege.role.name %></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+

@@ -4,3 +4,6 @@
 [submodule "lib/grack"]
 	path = lib/grack
 	url = http://github.com/schacon/grack.git
+[submodule "vendor/plugins/paperclip"]
+	path = vendor/plugins/paperclip
+	url = git://github.com/thoughtbot/paperclip.git

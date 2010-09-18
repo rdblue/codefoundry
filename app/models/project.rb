@@ -3,7 +3,6 @@ class Project < ActiveRecord::Base
   has_many :project_privileges
   has_many :users, :through => :project_privileges
   alias_method :privileges, :project_privileges
-  belongs_to :user
   
   default_scope order(:name)
   scope :by_param_scope, lambda { |param| where(:param => param)}
@@ -13,6 +12,11 @@ class Project < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :param
   before_save :save_param
+  has_attached_file :avatar, :styles => { :thumb => "48x48>" },
+    :default_url => "/images/project_:style.png",
+    :default_style => :thumb,
+    :url => "/projects/:attachment/:id/:style/:filename",
+    :path => ":rails_root/public/projects/avatars/:id/:style/:filename"
 
   # Hack to make scope always return single item instead of array
   def self.by_param(param)
@@ -31,7 +35,12 @@ class Project < ActiveRecord::Base
   def save_param
     self.param = to_param
   end
-  
+ 
+  def add_administrator(user)
+    r = Role.find_by_name 'Administrator'
+    privileges.create!({ :user => user, :role => r })
+  end
+
   # Is this user an owner?
   # TODO: add privilege fields and check those instead
   def owner?(arg)
