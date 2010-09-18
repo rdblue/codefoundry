@@ -18,6 +18,9 @@ class Project < ActiveRecord::Base
     :url => "/projects/:attachment/:id/:style/:filename",
     :path => ":rails_root/public/projects/avatars/:id/:style/:filename"
 
+  cattr_reader :per_page
+  @@per_page = 30
+
   # Hack to make scope always return single item instead of array
   def self.by_param(param)
     by_param_scope(param).first
