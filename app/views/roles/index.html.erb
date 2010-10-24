@@ -1,0 +1,35 @@
+<h1>Roles</h1>
+
+<table>
+  <tr>
+    <th>Role</th>
+    <th colspan=5>Access</th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>Edit Project</td>
+    <td>Add Other Users</td>
+    <td>Create and Delete Repositories</td>
+    <td>Commit</td>
+    <td>Checkout</td>
+  </tr>
+
+<% @roles.each do |role| %>
+  <tr>
+    <td><%= role.name %></td>
+    <td><%= role.edit_project ? 'X' : '' %>
+    <td><%= role.add_others ? 'X' : '' %>
+    <td><%= role.create_delete_repositories ? 'X' : '' %>
+    <td><%= role.commit ? 'X' : '' %>
+    <td><%= role.checkout ? 'X' : '' %>
+    <td>
+      <%= link_to 'Edit', edit_role_path(role) %>
+      <%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />

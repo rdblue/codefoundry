@@ -1,0 +1,44 @@
+<% yesno = [['No', false], ['Yes', true]] %>
+
+<%= form_for(@role) do |f| %>
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+      <ul>
+      <% @role.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :edit_project %><br/>
+    <%= f.select :edit_project, yesno %>
+  </p>
+
+  <p>
+    <%= f.label :add_others %><br/>
+    <%= f.select :add_others, yesno %>
+  </p>
+
+  <p>
+    <%= f.label :create_delete_repositories, 'Create and Delete Repositories' %><br/>
+    <%= f.select :create_delete_repositories, yesno %>
+  </p>
+
+  <p>
+    <%= f.label :commit %><br/>
+    <%= f.select :commit, yesno %>
+  </p>
+
+  <p>
+    <%= f.label :checkout %><br/>
+    <%= f.select :checkout, yesno %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

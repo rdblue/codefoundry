@@ -44,10 +44,8 @@ class Project < ActiveRecord::Base
     privileges.create!({ :user => user, :role => r })
   end
 
-  # Is this user an owner?
-  # TODO: add privilege fields and check those instead
-  def owner?(arg)
-    return true if users.include? arg
-    return false
+  # Is this user an editor?
+  def editor?(arg)
+    privileges.joins(:role).where(:user_id => arg).where(:roles => { :edit_project => true }).first ? true : false
   end
 end

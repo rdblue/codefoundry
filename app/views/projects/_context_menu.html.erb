@@ -8,7 +8,7 @@
 
 <h4>Administration</h4>
 <ul>
-  <% if @project and !@project.new_record? and @project.owner? current_user %>
+  <% if @project and !@project.new_record? and @project.editor? current_user %>
     <li><%= link_to 'Edit project', edit_project_path(@project) %></li>
   <% end %>
   <li><%= link_to 'New project', new_project_path %></li>

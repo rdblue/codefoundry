@@ -1,0 +1,13 @@
+<h1><%= @role.name %> Role</h1>
+
+<p>This role has the following access:
+
+<ul>
+  <%=raw "<li>Edit project</li>" if @role.edit_project? %>
+  <%=raw "<li>Add others to project</li>" if @role.add_others? %>
+  <%=raw "<li>Create and delete repositories</li>" if @role.create_delete_repositories? %>
+  <%=raw "<li>Commit</li>" if @role.commit? %>
+  <%=raw "<li>Checkout</li>" if @role.checkout? %>
+</ul>
+
+</p>

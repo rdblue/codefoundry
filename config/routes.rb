@@ -76,6 +76,8 @@ Codefoundry::Application.routes.draw do
     resources( :privileges )
   end
 
+  resources :roles
+
   # other pages default to the dispatch controller which will figure out what
   # the user wants
   # FIXME: commenting out until dispatch controller exists

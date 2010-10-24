@@ -1,0 +1,7 @@
+<h4>Administration</h4>
+<ul>
+  <li><%= link_to 'New role', new_role_path %></li>
+  <% if @role and !@role.new_record? %>
+    <li><%= link_to 'Edit role', edit_role_path(@role) %></li>
+  <% end %>
+</ul>
