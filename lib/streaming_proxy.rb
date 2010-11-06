@@ -4,12 +4,18 @@ require 'streaming_http'
 
 # A streaming proxy class, based on aniero's rack-streaming-proxy
 #
-# This version is heavily modified, but aniero's was used for the basis
+# * Some parts copyright (c) 2009 Nathan Witmer (aniero), used via MIT license
+# * This version is heavily modified, but aniero's was used for the basis
+#
+# Debugging output (when options[:debug] is on) is sent to $stderr.  This
+# should be okay, since $stderr is usually redirected to logs when running
+# detatched from a terminal.
 class StreamingProxy
 
   # Notable changes from aniero's version include:
   # * Added HTTP connection caching and reuse
   # * Replaced dependency on servolux with streaming HTTP patches
+  # * No longer needs to spawn a thread to stream requests
   # * Added options
   # * Updated request_method handling
   # * Updated header forwarding
@@ -31,6 +37,7 @@ class StreamingProxy
         #DAV TE Depth Label
       ]
 
+    # connection cache
     @@connections = {}
 
     attr_reader :status, :headers
@@ -38,10 +45,12 @@ class StreamingProxy
     def initialize( request, uri, options = {} )
       uri = URI.parse(uri)
 
+      # get the ruby class name of the request object, using the HTTP method
       method = request.request_method.downcase.split('-').map(&:capitalize).join
 
       $stderr.puts "Forwarding #{method.upcase} to #{uri}" if options[:debug]
 
+      # get an instance of the request class
       proxy_request = Net::HTTP.const_get(method).new("#{uri.path}#{"?" if uri.query}#{uri.query}")
 
       if request.body and request.content_type
