@@ -4,12 +4,6 @@ class Repository < ActiveRecord::Base
   # SCM config
   GIT_SCM = 1
   SVN_SCM = 2
-  cattr_accessor :repository_base_path
-  cattr_accessor :repository_archive_path
-
-  # TODO: extract these into a settings file, but keep them as defaults
-  @@repository_base_path = '/var/codefoundry/'
-  @@repository_archive_path = '/var/codefoundry/archive'
 
   belongs_to :project
   belongs_to :user
@@ -90,9 +84,9 @@ class Repository < ActiveRecord::Base
   def full_path
     case scm
       when GIT_SCM
-        File.join @@repository_base_path, 'git', owner.param, "#{param}.git"
+        File.join Settings.repository_base_path, 'git', owner.param, "#{param}.git"
       when SVN_SCM
-        File.join @@repository_base_path, 'svn', owner.param, self.param
+        File.join Settings.repository_base_path, 'svn', owner.param, self.param
       else
         raise UnsupportedSCMError
     end
@@ -114,7 +108,7 @@ class Repository < ActiveRecord::Base
   def destroy_repository
     case scm
       when GIT_SCM
-        self.class.delay.destroy_git_repository(@@repository_archive_path, full_path)
+        self.class.delay.destroy_git_repository(Settings.repository_archive_path, full_path)
       when SVN_SCM
       else
         raise UnsupportedSCMError
