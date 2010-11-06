@@ -40,14 +40,5 @@ module Codefoundry
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
-    # Application config, from config/settings.yml
-    # * http://kpumuk.info/ruby-on-rails/flexible-application-configuration-in-ruby-on-rails/
-    cattr_accessor :settings
-    @@settings = OpenStruct.new(
-        YAML.load_file(
-            File.join( Rails.root, 'config', 'settings.yml' )
-          )[Rails.env] || {}
-      )
   end
 end

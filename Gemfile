@@ -48,3 +48,6 @@ gem 'coderay'
 # group :test do
 #   gem "webrat"
 # end
+
+# settings yml
+gem 'settingslogic'
