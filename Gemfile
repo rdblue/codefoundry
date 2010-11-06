@@ -41,15 +41,10 @@ gem 'will_paginate', "~> 3.0.pre2"
 gem 'paperclip', "2.3.4"
 
 # syntax highlighting
-# uses harsh plug-in, which depends on the ultraviolet gem, which depends on
-# Oniguruma (install from source), see NOTES
-gem 'ultraviolet', :require => 'uv'
-# gem 'spox-ultraviolet', :require => 'uv' # for ruby 1.9.1
+gem 'coderay'
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test
 # group :test do
 #   gem "webrat"
 # end
-
-gem 'rack-streaming-proxy'
