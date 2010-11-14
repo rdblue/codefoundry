@@ -1,4 +1,5 @@
 vendor/cache/*
+public/projects
 config/database.yml
 config/settings.yml
 log/*.log
@@ -9,3 +10,4 @@ doc/app
 doc/plugins
 .bundle
 notes.txt
+TODO*
