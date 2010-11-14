@@ -51,3 +51,6 @@ gem 'coderay'
 
 # settings yml
 gem 'settingslogic'
+
+# use jQuery instead of prototype
+gem 'jquery-rails'
