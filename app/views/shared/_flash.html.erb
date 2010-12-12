@@ -1,0 +1,36 @@
+<%
+# this partial is used to render flash messages.  this is loaded every time a
+# page is rendered and can be used to replace #flash in async calls to show the
+# flash
+#
+# this expects no local variables
+#
+# question: should this discard messages after rendering them?
+-%>
+<div id="flash" class="hide">
+  <%= link_to_function 'X' do |page|
+      page['#flash'].hide
+    end %>
+  <% if flash[:error] %>
+    <div id="error" class="error">test<%= flash[:error] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div id="notice" class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:success] %>
+    <div id="success" class="success"><%= flash[:success] %></div>
+  <% end %>
+</div>
+<%=
+# js to show the flash notifications
+update_page_tag do |page|
+  if flash[:error]
+    page['#flash'].show
+    # error messages do not expire
+  elsif flash[:notice] or flash[:success] or true
+    page['#flash'].show
+    # hide the flash notifications after 10 seconds
+    page.delay( 10 ) { page['#flash'].hide }
+  end
+end
+%>

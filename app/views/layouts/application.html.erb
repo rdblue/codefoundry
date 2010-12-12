@@ -14,6 +14,11 @@
 </head>
 <body>
   <div class="container">
+    <div id="notification-area" class="span-18">
+      <%= render :partial => 'shared/system_messages' %>
+      <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
+      <%= yield :forms %>
+    </div>
     <div id="header" class="span-18">
       <h2><%= link_to 'Codefoundry', root_url, :style => 'text-decoration:none; color:black' %></h2>
     </div>
@@ -31,15 +36,6 @@
     <div id="header-content-separator" class="span-24 last"><hr/></div>
 
     <div id="content" class="span-18 border">
-      <% if flash[:error] %>
-        <div id="error" class="error"><%= flash[:error] %></div>
-      <% end %>
-      <% if flash[:notice] %>
-        <div id="notice" class="notice"><%= flash[:notice] %></div>
-      <% end %>
-      <% if flash[:success] %>
-        <div id="success" class="success"><%= flash[:success] %></div>
-      <% end %>
       <%= yield %>
     </div>
 
