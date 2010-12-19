@@ -1,18 +1,35 @@
-<h1>Welcome to Codefoundry!</h1>
+<h1>Welcome!</h1>
 
-<p>Codefoundry is an open-source source-code management tool. It enables
-you to easily utilize revision control in your business and other projects.
+<p>
+  Codefoundry is an open-source code management tool that makes it easy to use
+  revision control in your business and other projects.
 </p>
 
-<div class="span-9">
+<% content_for :pre_sidebar do -%>
+<div class="big-button span-5">
+  <%= link_to 'Join CodeFoundry', signup_path %>
+</div>
+
+<div class="big-button span-5">
+  <%= link_to 'Start a Project', new_project_path %>
+</div>
+
+<div class="big-button span-5">
+  <%= link_to 'Find a Project', projects_path %>
+</div>
+<% end -%>
+
+<%= start_wide_content %>
+
+<div class="span-11">
 <h2>Popular</h2>
 <%= render :partial => @popular_projects %>
 
 </div>
 
-<div class="span-9 last">
+<div class="push-2 span-11 last">
 <h2>New</h2>
 <%= render :partial => @new_projects %>
 </div>
 
-<h2><%= link_to 'Browse projects ->', projects_path %></h2>
+<!-- <h2><%= link_to 'Browse projects ->', projects_path %></h2> -->

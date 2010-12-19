@@ -3,22 +3,26 @@
 # page is rendered and can be used to replace #flash in async calls to show the
 # flash
 #
-# this expects no local variables
+# expected locals:
+# * flash
 #
 # question: should this discard messages after rendering them?
+flash[:error] = 'Test message'
+flash[:notice] = 'Test message'
+flash[:success] = 'Test message'
 -%>
 <div id="flash" class="hide">
-  <%= link_to_function 'X' do |page|
+  <%= link_to_function 'X', :class => 'span-1 remove' do |page|
       page['#flash'].hide
-    end %>
+    end if flash[:error] or flash[:notice] or flash[:success] %>
   <% if flash[:error] %>
-    <div id="error" class="error">test<%= flash[:error] %></div>
+    <div id="error" class="error push-1 span-16 last"><%= flash[:error] %></div>
   <% end %>
   <% if flash[:notice] %>
-    <div id="notice" class="notice"><%= flash[:notice] %></div>
+    <div id="notice" class="notice push-1 span-16 last"><%= flash[:notice] %></div>
   <% end %>
   <% if flash[:success] %>
-    <div id="success" class="success"><%= flash[:success] %></div>
+    <div id="success" class="success push-1 span-16 last"><%= flash[:success] %></div>
   <% end %>
 </div>
 <%=

@@ -24,4 +24,8 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+
+  def start_wide_content
+    '<div class="clearfix"></div>'.html_safe
+  end
 end

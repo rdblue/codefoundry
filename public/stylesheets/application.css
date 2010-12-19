@@ -1,6 +1,190 @@
+/* override blueprint on some things */
+
+a {
+  /* use !important to override blueprint */
+  color: #3465a4 !important;
+}
+
+h1, h2, h3, h4, h5, h6, hr {
+  color: #204a87 !important;
+  /* limit the width of the bottom border */
+  width: 90%;
+}
+
+h1, h2, hr {
+  border: none !important;
+  border-bottom: 1px solid #babdb6 !important;
+}
+
+/* generic style classes */
+
+.float {
+  float: right !important;
+}
+
+.round {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.round-top {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-radius-topleft: 5px;
+  border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-radius-topright: 5px;
+  border-radius-topright: 5px;
+}
+
+.round-bottom {
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-radius-bottomleft: 5px;
+  border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-radius-bottomright: 5px;
+  border-radius-bottomright: 5px;
+}
+
+.big-button {
+  background-color: #f57900;
+  -moz-box-shadow: 1px 1px 4px #555753;
+  -webkit-box-shadow: 1px 1px 4px #555753;
+  box-shadow: 1px 1px 4px #555753;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #ce5c00;
+  margin-top: 0.5em;
+  text-align: center;
+  /* must use the same height as inner link */
+  height: 3em;
+}
+
+.big-button a {
+  /* text style */
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #ffffff !important;
+  /* use the entire parent div */
+  display: block;
+  padding-top: 0.25em;
+  height: 3em;
+  width: 100%;
+}
+
+.big-button a:hover {
+  text-decoration: underline;
+}
+
+/* mostly for 'X' links */
+a.remove {
+  width: 1em; /* not sure why this is needed... */
+  padding: 0.5em;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-decoration: none;
+  display: block;
+}
+
+/* layout styles */
+
+body {
+  background-color: #eeeeec !important;
+  color: #2e3436 !important;
+}
+
+#background {
+  /* background-color: #2e3436; */
+  /* background-color: #555753; */
+  /* background-color: #888a85; */
+}
+
+#container-background {
+  /* set a little larger than the container to create padding without messing
+   * up the grid
+   */
+  width: 970px;
+  background-color: #fff;
+  border-left: 2px solid #babdb6;
+  border-right: 2px solid #babdb6;
+  -moz-box-shadow: 1px 1px 5px #555753;
+  -webkit-box-shadow: 1px 1px 5px #555753;
+  margin: auto;
+}
+
+#header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 2px solid #babdb6;
+  -moz-box-shadow: 1px 1px 5px #555753;
+  -webkit-box-shadow: 1px 1px 5px #555753;
+  margin: auto;
+  z-index: 1;
+}
+
+#logo a {
+  letter-spacing: -0.03em;
+  font-size: 34pt;
+  text-decoration: none;
+  color: #204a87 !important;
+}
+
+#logo a #code {
+  color: #f57900;
+}
+
+#notification-area {
+  background-color: #fff;
+  position: fixed;
+  border: 3px solid #babdb6;
+  border-top: none;
+  /* hide border and shadow when not showing */
+  margin-top: -7px;
+  -moz-box-shadow: 1px 1px 4px #555753;
+  -webkit-box-shadow: 1px 1px 4px #555753;
+  box-shadow: 1px 1px 4px #555753;
+  z-index: 2;
+}
+
+#sidebar {
+  margin-top: 2em;
+  padding-left: 1em;
+  background-color: #fff;
+  border-left: 1px solid #babdb6;
+}
+
+#content {
+  padding-top: 1em;
+}
+
+/* flash styles */
+
+#notification-area .error {
+  border: none;
+  background: none;
+  color: #a40000;
+}
+
+#notification-area .notice {
+  border: none;
+  background: none;
+  color: #ce5c00;
+}
+
+#notification-area .success {
+  border: none;
+  background: none;
+  color: #4e9a06;
+}
+
+#flash {
+  
+}
+
 .double_border {
   padding: 1px;
-  border: 1px solid #021a40;
+  border: 1px solid #3465a4;
 }
 
 /* start will_paginate css */
