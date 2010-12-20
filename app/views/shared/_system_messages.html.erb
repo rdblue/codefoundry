@@ -1,5 +1,22 @@
 <%
 # this partial displays system messages and announcements
+#system_message = "CodeFoundry will be down for maintenance on 25 Dec from 0600 to 0700 EST."
 -%>
-<div id="system-messages">
+<div id="system-messages" class="hide">
+  <div class="span-1">
+    <%= link_to_function 'X', :class => 'remove' do |page|
+      page['#system-messages'].hide
+    end %>
+  </div>
+  <div class="span-16">
+    <div class="system-message"><%= system_message %></div>
+  </div>
 </div>
+<%=
+# js to show the system message
+if system_message
+  update_page_tag do |page|
+    page['#system-messages'].show
+  end
+end
+%>

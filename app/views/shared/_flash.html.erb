@@ -6,24 +6,27 @@
 # expected locals:
 # * flash
 #
-# question: should this discard messages after rendering them?
-flash[:error] = 'Test message'
-flash[:notice] = 'Test message'
-flash[:success] = 'Test message'
+#flash[:error] = 'Test message'
+#flash[:notice] = 'Test message'
+#flash[:success] = 'Test message'
 -%>
 <div id="flash" class="hide">
-  <%= link_to_function 'X', :class => 'span-1 remove' do |page|
+  <div class="span-1">
+    <%= link_to_function 'X', :class => 'remove' do |page|
       page['#flash'].hide
-    end if flash[:error] or flash[:notice] or flash[:success] %>
-  <% if flash[:error] %>
-    <div id="error" class="error push-1 span-16 last"><%= flash[:error] %></div>
-  <% end %>
-  <% if flash[:notice] %>
-    <div id="notice" class="notice push-1 span-16 last"><%= flash[:notice] %></div>
-  <% end %>
-  <% if flash[:success] %>
-    <div id="success" class="success push-1 span-16 last"><%= flash[:success] %></div>
-  <% end %>
+    end %>
+  </div>
+  <div class="span-16">
+    <% if flash[:error] %>
+      <div id="error" class="error"><%= flash[:error] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div id="notice" class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:success] %>
+      <div id="success" class="success"><%= flash[:success] %></div>
+    <% end %>
+  </div>
 </div>
 <%=
 # js to show the flash notifications
@@ -31,7 +34,7 @@ update_page_tag do |page|
   if flash[:error]
     page['#flash'].show
     # error messages do not expire
-  elsif flash[:notice] or flash[:success] or true
+  elsif flash[:notice] or flash[:success]
     page['#flash'].show
     # hide the flash notifications after 10 seconds
     page.delay( 10 ) { page['#flash'].hide }

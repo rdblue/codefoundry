@@ -79,12 +79,11 @@ h1, h2, hr {
 
 /* mostly for 'X' links */
 a.remove {
-  width: 1em; /* not sure why this is needed... */
-  padding: 0.5em;
+  margin-left: 1.5em;
   font-weight: bold;
   text-transform: capitalize;
   text-decoration: none;
-  display: block;
+  color: #3465a4 !important;
 }
 
 /* layout styles */
@@ -92,12 +91,6 @@ a.remove {
 body {
   background-color: #eeeeec !important;
   color: #2e3436 !important;
-}
-
-#background {
-  /* background-color: #2e3436; */
-  /* background-color: #555753; */
-  /* background-color: #888a85; */
 }
 
 #container-background {
@@ -147,6 +140,10 @@ body {
   z-index: 2;
 }
 
+#notification-area>div {
+  margin-top: 1em;
+}
+
 #sidebar {
   margin-top: 2em;
   padding-left: 1em;
@@ -158,28 +155,34 @@ body {
   padding-top: 1em;
 }
 
-/* flash styles */
+/* flash and system messages */
+
+#notification-area .error,
+#notification-area .notice,
+#notification-area .success,
+#notification-area .system-message {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 2em;
+  font-size: 11pt;
+}
 
 #notification-area .error {
-  border: none;
-  background: none;
-  color: #a40000;
+  color: #cc0000;
 }
 
 #notification-area .notice {
-  border: none;
-  background: none;
-  color: #ce5c00;
+  color: #f57900;
 }
 
 #notification-area .success {
-  border: none;
-  background: none;
   color: #4e9a06;
 }
 
-#flash {
-  
+#notification-area .system-message {
+  font-size: 12pt;
 }
 
 .double_border {

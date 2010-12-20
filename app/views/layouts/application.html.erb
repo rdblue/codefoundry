@@ -16,7 +16,7 @@
   <div id="header">
     <div id="header-container" class="container">
       <div id="notification-area" class="round-bottom push-3 span-18">
-        <%= render :partial => 'shared/system_messages' %>
+        <%= render :partial => 'shared/system_messages', :locals => {:system_message => @system_message} %>
         <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
         <%= yield :forms %>
       </div>
