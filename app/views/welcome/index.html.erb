@@ -6,17 +6,19 @@
 </p>
 
 <% content_for :pre_sidebar do -%>
-<div class="big-button span-5">
-  <%= link_to 'Join CodeFoundry', signup_path %>
-</div>
+  <% unless current_user %>
+    <div class="big-button span-5">
+      <%= link_to 'Join CodeFoundry', signup_path %>
+    </div>
+  <% end %>
 
-<div class="big-button span-5">
-  <%= link_to 'Start a Project', new_project_path %>
-</div>
+  <div class="big-button span-5">
+    <%= link_to 'Start a Project', new_project_path %>
+  </div>
 
-<div class="big-button span-5">
-  <%= link_to 'Find a Project', projects_path %>
-</div>
+  <div class="big-button span-5">
+    <%= link_to 'Find a Project', projects_path %>
+  </div>
 <% end -%>
 
 <%= start_wide_content %>

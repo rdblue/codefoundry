@@ -1,12 +1,14 @@
 /* override blueprint on some things */
+/* (use !important to override) */
 
 a {
-  /* use !important to override blueprint */
   color: #3465a4 !important;
 }
 
 h1, h2, h3, h4, h5, h6, hr {
-  color: #204a87 !important;
+  color: #2e3436 !important;
+  /* font-weight: bold !important; */
+  /* color: #204a87 !important; */
   /* limit the width of the bottom border */
   width: 90%;
 }
@@ -55,7 +57,9 @@ h1, h2, hr {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #ce5c00;
-  margin-top: 0.5em;
+  border-top: 1px solid #fcaf3e;
+  margin-top: 0.2em;
+  margin-bottom: 0.3em;
   text-align: center;
   /* must use the same height as inner link */
   height: 3em;
@@ -86,39 +90,46 @@ a.remove {
   color: #3465a4 !important;
 }
 
+/* horizontal lists */
+ul.horizontal-list {
+  margin-top: 0.5em;
+  list-style-type: none;
+  text-align: center;
+}
+
+ul.horizontal-list li {
+  padding: 0.5em;
+  display: inline;
+}
+
+.fancy {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
 /* layout styles */
 
 body {
   background-color: #eeeeec !important;
   color: #2e3436 !important;
-}
-
-#container-background {
-  /* set a little larger than the container to create padding without messing
-   * up the grid
-   */
-  width: 970px;
-  background-color: #fff;
-  border-left: 2px solid #babdb6;
-  border-right: 2px solid #babdb6;
-  -moz-box-shadow: 1px 1px 5px #555753;
-  -webkit-box-shadow: 1px 1px 5px #555753;
-  margin: auto;
+  font-family: Helvetica, sans-serif !important;
 }
 
 #header {
   width: 100%;
-  background-color: #fff;
-  border-bottom: 2px solid #babdb6;
+  background-color: #eeeeec;
+  border-bottom: 2px solid #f57900;
   -moz-box-shadow: 1px 1px 5px #555753;
   -webkit-box-shadow: 1px 1px 5px #555753;
   margin: auto;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
 }
 
 #logo a {
   letter-spacing: -0.03em;
   font-size: 34pt;
+  font-weight: bold;
   text-decoration: none;
   color: #204a87 !important;
 }
@@ -130,18 +141,43 @@ body {
 #notification-area {
   background-color: #fff;
   position: fixed;
+  /* border and shadow */
   border: 3px solid #babdb6;
   border-top: none;
-  /* hide border and shadow when not showing */
-  margin-top: -7px;
   -moz-box-shadow: 1px 1px 4px #555753;
   -webkit-box-shadow: 1px 1px 4px #555753;
   box-shadow: 1px 1px 4px #555753;
-  z-index: 2;
+  /* hide border and shadow when not showing */
+  margin-top: -7px;
+  /* make sure it is on top when displayed */
+  z-index: 3;
 }
 
 #notification-area>div {
   margin-top: 1em;
+}
+
+#container-background {
+  /* set a little larger than the container to create padding without messing
+   * up the grid
+   */
+  width: 970px;
+  background-color: #fff;
+  border-left: 2px solid #babdb6;
+  border-right: 2px solid #babdb6;
+  border-bottom: 2px solid #babdb6;
+  -moz-box-shadow: 1px 1px 5px #555753;
+  -webkit-box-shadow: 1px 1px 5px #555753;
+  box-shadow: 1px 1px 5px #555753;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin: auto;
+  /* hide the top under the header */
+  margin-top: -1em;
+  padding-top: 1em;
+  position: relative;
+  z-index: 1;
 }
 
 #sidebar {
@@ -153,6 +189,19 @@ body {
 
 #content {
   padding-top: 1em;
+}
+
+#footer-background {
+  width: 970px;
+  background-color: #eeeeec;
+  border-top: 2px solid #f57900;
+  margin: auto;
+}
+
+#footer {
+  padding: 0.5em;
+  color: #2e3436;
+  text-align: center;
 }
 
 /* flash and system messages */
@@ -187,7 +236,7 @@ body {
 
 .double_border {
   padding: 1px;
-  border: 1px solid #3465a4;
+  border: 1px solid #555753;
 }
 
 /* start will_paginate css */

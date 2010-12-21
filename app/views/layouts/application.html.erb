@@ -26,33 +26,43 @@
       </div>
 
       <div id="login_shortcut" class="push-10 span-6 last">
-        <% if current_user %>
-          <%= current_user.username %> - 
-          <%= link_to 'Account', account_path %> -
-          <%= link_to 'Sign out', logout_path %>
-        <% else %>
-          <%= link_to 'Log in', login_path %> -
-          <%= link_to 'Sign up', signup_path %>
-        <% end %>
+        <ul class="horizontal-list">
+          <% if current_user %>
+            <li><%= current_user.username %></li>
+            <li><%= link_to 'Account', account_path %></li>
+            <li><%= link_to 'Sign out', logout_path %></li>
+          <% else %>
+            <li><%= link_to 'Log in', login_path %></li>
+            <li><%= link_to 'Sign up', signup_path %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
+
   <div id="container-background">
-  <div class="container">
-    <div id="sidebar" class="span-6 float last">
-      <%= yield :pre_sidebar %>
-      <%= render 'context_menu' %>
-      <%= yield :post_sidebar %>
+    <div class="container">
+      <div id="sidebar" class="span-6 float last">
+        <%= yield :pre_sidebar %>
+        <%= render 'context_menu' %>
+        <%= yield :post_sidebar %>
+      </div>
+
+      <div id="content">
+        <%= yield %>
+      </div>
     </div>
 
-    <div id="content">
-      <%= yield %>
+    <div id="footer-background" class="container">
+      <div id="footer" class="push-3 span-18">
+        <p class="fancy">Enterprise source-code management</p>
+        <ul class="small horizontal-list">
+          <li><%= link_to 'About', about_path %></li>
+          <li><%= link_to 'FAQ', faq_path %></li>
+          <li><%= link_to 'License', 'http://www.gnu.org/licenses/agpl-3.0-standalone.html' %></li>
+        </ul>
+      </div>
     </div>
-
-    <div id="footer" class="span-24 prepend-top">
-      <p>Enterprise source-code management</p>
-    </div>
-  </div>
   </div>
 </body>
 </html>
