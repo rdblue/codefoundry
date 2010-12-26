@@ -10,12 +10,31 @@ h1, h2, h3, h4, h5, h6, hr {
   /* font-weight: bold !important; */
   /* color: #204a87 !important; */
   /* limit the width of the bottom border */
-  width: 90%;
+  /* width: 90%; */
 }
 
 h1, h2, hr {
   border: none !important;
   border-bottom: 1px solid #babdb6 !important;
+}
+
+/* set up marker-related styles */
+
+.indent {
+  margin-left: 1.5em !important;
+  margin-bottom: 1.5em;
+}
+
+/* compress lists that are next to one another.  since the adjacency operator,
+ * +, selects the second element and we need to remove the space from the
+ * first, we use a negative margin.  The margin on all list-like elements
+ * should be 1.5em. */
+ul + ul, ul + ol, ul + dl, ul + .indent,
+ol + ul, ol + ol, ol + dl, ol + .indent,
+dl + ul, dl + ol, dl + dl, dl + .indent,
+.indent + ul, .indent + ol,
+.indent + dl, .indent + .indent {
+  margin-top: -1.5em !important;
 }
 
 /* generic style classes */
@@ -81,7 +100,7 @@ h1, h2, hr {
   text-decoration: underline;
 }
 
-/* mostly for 'X' links */
+/* for 'X' links */
 a.remove {
   margin-left: 1.5em;
   font-weight: bold;
@@ -102,6 +121,7 @@ ul.horizontal-list li {
   display: inline;
 }
 
+/* serif/italic text */
 .fancy {
   font-family: Georgia, serif;
   font-style: italic;
@@ -182,6 +202,7 @@ body {
 
 #sidebar {
   margin-top: 2em;
+  margin-left: 1em;
   padding-left: 1em;
   background-color: #fff;
   border-left: 1px solid #babdb6;
