@@ -37,6 +37,17 @@ dl + ul, dl + ol, dl + dl, dl + .indent,
   margin-top: -1.5em !important;
 }
 
+ol.footnotes {
+  border-top: 1px solid #babdb6;
+  padding-top: 0.5em;
+  overflow: visible;
+  width: 70px; /* span-2 */
+}
+
+ol.footnotes li {
+  width: 470px; /* span-12 */
+}
+
 /* generic style classes */
 
 .float {

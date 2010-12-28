@@ -1,8 +1,5 @@
 module ApplicationHelper
   def marker_to_html( markup, options = {} )
-    # Marker can't handle windows newlines and does not do sanitization so we
-    # account for that here.
-    markup.gsub!(/\r/, '')
     # h() returns a SafeBuffer, but we need a real string before going to 
     # marker so that its output doesn't get escaped in the view
     # http://yehudakatz.com/2010/02/01/safebuffers-and-rails-3-0/
