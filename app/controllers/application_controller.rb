@@ -11,6 +11,13 @@ private
     render :text => "We couldn't find that page..."
   end
 
+  def render_marker( page, options = {} )
+    marker_source = File.join( Rails.root, 'public', 'docs', page + '.marker' )
+    @marker = File.read( marker_source )
+    @options = options
+    render 'shared/marker'
+  end
+
   def current_user_session  
     return @current_user_session if defined?(@current_user_session)  
     @current_user_session = UserSession.find  
