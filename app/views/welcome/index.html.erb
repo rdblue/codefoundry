@@ -5,28 +5,11 @@
   revision control in your business and other projects.
 </p>
 
-<% content_for :pre_sidebar do -%>
-  <% unless current_user %>
-    <div class="big-button span-5">
-      <%= link_to 'Join CodeFoundry', signup_path %>
-    </div>
-  <% end %>
-
-  <div class="big-button span-5">
-    <%= link_to 'Start a Project', new_project_path %>
-  </div>
-
-  <div class="big-button span-5">
-    <%= link_to 'Find a Project', projects_path %>
-  </div>
-<% end -%>
-
 <%= start_wide_content %>
 
 <div class="span-11">
 <h2>Popular</h2>
 <%= render :partial => @popular_projects %>
-
 </div>
 
 <div class="push-2 span-11 last">
