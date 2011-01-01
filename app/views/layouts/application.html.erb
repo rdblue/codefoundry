@@ -22,7 +22,9 @@
       </div>
 
       <div id="logo" class="span-8">
-        <%= link_to '<span id="code">code</span>foundry'.html_safe, root_url %>
+        <%= link_to root_url do %>
+          <span id="code">code</span>foundry
+        <% end %>
       </div>
 
       <div id="login_shortcut" class="push-10 span-6 last">
@@ -61,6 +63,7 @@
           <li><%= link_to 'FAQ', faq_path %></li>
           <li><%= link_to 'License', 'http://www.gnu.org/licenses/agpl-3.0-standalone.html' %></li>
         </ul>
+        <%= svg_tag '3-gears-small.svg', :width => '1em' %>
       </div>
     </div>
   </div>

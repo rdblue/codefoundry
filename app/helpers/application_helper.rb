@@ -25,4 +25,14 @@ module ApplicationHelper
   def start_wide_content
     '<div class="clearfix"></div>'.html_safe
   end
+
+  def svg_tag( source, options = {} )
+    options.merge!(
+        :src => image_path( source ),
+        :pluginspage => 'http://www.adobe.com/svg/viewer/install/',
+        :type => 'image/svg+xml',
+      )
+    attrs = options.map { |key, val| "#{key}=\"#{val}\"" }.join(' ')
+    "<embed #{attrs} />".html_safe
+  end
 end
