@@ -92,19 +92,20 @@ ol.footnotes li {
   margin-bottom: 0.3em;
   text-align: center;
   /* must use the same height as inner link */
-  height: 3em;
+  height: 4em;
 }
 
 .big-button a {
   /* text style */
-  font-size: 1.5em;
+  font-size: 2em;
   text-decoration: none;
   color: #ffffff !important;
   /* use the entire parent div */
   display: block;
   padding-top: 0.25em;
-  height: 3em;
+  height: 2em;
   width: 100%;
+  vertical-align: middle;
 }
 
 .big-button a:hover {

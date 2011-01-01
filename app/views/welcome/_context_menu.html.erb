@@ -1,18 +1,18 @@
 <% unless current_user %>
-  <div class="big-button span-5">
+  <div class="big-button span-7">
     <%= link_to 'Join CodeFoundry', signup_path %>
   </div>
 <% end %>
 
-<div class="big-button span-5">
+<div class="big-button span-6">
   <%= link_to 'Start a Project', new_project_path %>
 </div>
 
-<div class="big-button span-5">
+<div class="big-button span-6">
   <%= link_to 'Find a Project', projects_path %>
 </div>
 
-<div class="span-5">
+<div class="span-6">
   <ul class="horizontal-list">
     <li><%= link_to_unless_current 'About', about_path %></li>
     <li><%= link_to_unless_current 'FAQ', faq_path %></li>
