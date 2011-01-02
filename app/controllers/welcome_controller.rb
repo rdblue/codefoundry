@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     render_marker( params[:action] )
   end
 
-  def faq
-    render_marker( params[:action] )
-  end
+  # copy #about for #faq and #roadmap
+  alias_method :faq, :about
+  alias_method :roadmap, :about
 end

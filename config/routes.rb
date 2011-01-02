@@ -5,6 +5,7 @@ Codefoundry::Application.routes.draw do
   get 'about', :to => 'welcome#about', :as => 'about'
   get 'search', :to => 'welcome#search', :as => 'search'
   get 'faq', :to => 'welcome#faq', :as => 'faq'
+  get 'roadmap', :to => 'welcome#roadmap', :as => 'roadmap'
 
   # the current user's account page
   resource :account

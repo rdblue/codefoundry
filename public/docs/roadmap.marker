@@ -1,0 +1,118 @@
+= Development Roadmap =
+
+== CodeFoundry Server ==
+
+[https://github.com/rdblue/codefoundry-server CodeFoundry server] is a
+complimentary project to create a [http://vagrantup.com/ vagrant]-based
+development server and chef deployment recipes.  This should greatly cut down
+on the setup time to get a fully-working instance of CodeFoundry up and
+running.
+
+Nearly everything still needs to be done to make this happen:
+# Install and set up apache and a rails stack
+# Install svn, mod_dav_svn, and svn ruby bindings
+# Configure a virtual host for SVN projects using mod_dav_svn
+# Install git
+# Install the CodeFoundry rails application
+# Configure a virtual host for the CF application
+# Set up the CF background job daemon, with init scripts and monitoring
+
+== Basic Functionality ==
+
+Basic functionality is the set of features that are supplied by the currently
+running CodeFoundry instance, but expanded to include support for git
+repositories and the new ways that CF will work.  For example, "basic"
+functionality covers the ability to have multiple repositories per project, and
+for those repositories to have syntax highlighting.  It would not include 
+
+=== Back-end Access ===
+
+We need to get back-end access back up and running.  It is not currently
+working because of the switch to Settingslogic.  The git and svn handlers
+expect to be able to access settings, but they are not available in config.ru.
+We can either find out how to embed the handlers in config/routes or we can get
+Settingslogic to work in config.ru.
+
+=== Access Controls ===
+
+We need to get access control code written and apply it to the back-end
+handlers.  They currently allow all access.
+
+=== Repository Management ===
+
+We need to set up repository CRUD for both git and svn repositories.
+
+=== Repository Browsing (read-only) ===
+
+We need to implement repository browsing, with
+[http://coderay.rubychan.de/ CodeRay]-based syntax highlighting.  Ideally, we
+would also include the ability to look at commit diffs, although this is not
+supported by the current CF.
+
+=== Repository Hooks ===
+
+We need to have support for custom pre and post commit hooks for issue tracking
+and CI.
+
+=== Project Searching ===
+
+We need to have some basic search features for projects, so they can be found
+based on name and metadata.  We also need to add a search box to the layout.
+
+=== Help and Documentation ===
+
+Need to write a controller that serves help pages.  This will most likely be
+done through a docs controller that works similarly to welcome, which simply
+renders (and caches) marker-based documentation that is included with the rails
+project itself.
+
+=== Style and Presentation ===
+
+All of the interfaces will need to be properly styled and designed for
+usability.
+
+== Expanded Features ==
+
+These are features that are not required for the new implementation to replace
+the old.
+
+=== Repository Searching ===
+
+Index code in repositories with ferret.
+
+=== Project Attributes and Searching ===
+
+Add project attributes like license, maturity rating, support rating, community
+rating.
+
+Implement robust searching based on project attributes.
+
+=== Repository Interaction (read-write) ===
+
+=== Wiki Repositories ===
+
+Implement a wiki-like interface based on a 'wiki' repository.  This should be
+configurable so it can be turned off for organizations that have a separate
+wiki.
+
+== External Work ==
+
+These are tasks that would help CF by enhancing external projects.
+
+=== Marker ===
+
+Marker is close to having a few features that would really benefit CodeFoundry
+because they are tied so closely together.
+
+; Default templates
+: It would be really nice if Marker had some included templates, like syntax highlighting support through CodeRay.  Other nice things would be subscript, superscript, strikethrough, nowiki/marker off, and fixed-width/tt.
+; Table of Contents
+: TOC support in marker would be really nice, especially if the table of contents could be optionally accessed rather than embedded.  That way, we could put the contents links in the CF page's sidebar.  At a minimum, Marker should provide anchors for section linking.
+; Linking
+:* Linking could be extended to add interwiki-style links through some sort of registered handler.
+:* It would also be nice to be able to change the link_base attribute in render options.
+
+=== CodeRay ===
+
+CodeRay is an awesome ruby library for syntax highlighting.  It would be nice
+to contribute back support for additional languages, like perl.
