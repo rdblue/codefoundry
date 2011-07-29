@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
 
-gem "rails", "3.0.0"
+gem "rails", "~> 3.0"
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -18,7 +18,7 @@ gem "sqlite3-ruby", :require => "sqlite3" # development
 # gem "aws-s3", :require => "aws/s3"
 
 # repository access gems
-gem 'grit', '2.3.0' # git
+gem 'grit', '~> 2.3' # git
 # gem 'amp' # mercurial
 
 # background processing framework
@@ -35,7 +35,7 @@ gem 'marker'
 gem 'authlogic'
 
 # pagination
-gem 'will_paginate', "~> 3.0.pre2"
+gem 'will_paginate'
 
 # image processing
 gem 'paperclip', "2.3.4"
