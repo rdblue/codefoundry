@@ -22,7 +22,7 @@ gem 'grit', '2.3.0' # git
 # gem 'amp' # mercurial
 
 # background processing framework
-gem 'delayed_job', "2.1.0.pre2"
+gem 'delayed_job'
 
 # search and indexing gems
 # gem 'ferret'

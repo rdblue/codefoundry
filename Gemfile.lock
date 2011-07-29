@@ -35,7 +35,7 @@ GEM
     builder (2.1.2)
     coderay (0.9.6)
     daemons (1.1.4)
-    delayed_job (2.1.0.pre2)
+    delayed_job (2.1.4)
       activesupport (~> 3.0)
       daemons
     diff-lcs (1.1.2)
@@ -93,7 +93,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   coderay
-  delayed_job (= 2.1.0.pre2)
+  delayed_job
   grit (= 2.3.0)
   jquery-rails
   marker
