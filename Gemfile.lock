@@ -34,7 +34,7 @@ GEM
       activesupport
     builder (2.1.2)
     coderay (0.9.6)
-    daemons (1.1.0)
+    daemons (1.1.4)
     delayed_job (2.1.0.pre2)
       activesupport (~> 3.0)
       daemons
