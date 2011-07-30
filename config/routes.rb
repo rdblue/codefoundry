@@ -16,14 +16,6 @@ Codefoundry::Application.routes.draw do
   post 'session', :to => 'user_sessions#create'
   get 'signup', :to => 'users#new'
 
-  # route to both the git and svn handlers.  the handlers will be
-  # responsible for rendering errors if the request cannot be served (e.g.,
-  # if git is requested for a svn repository)
-  # FIXME: these trigger "ERROR NameError: uninitialized constant Net::ProtoAuthError"
-  # for me - commenting out until the bugs are worked out
-  #match 'git(/*params)' => GitHandler.new, :anchor => false
-  #match 'svn(/*params)' => SvnHandler.new, :anchor => false
-
   # repository controller; accessed through both :users and :projects so we
   # build the route in a Proc and pass it to resources later
   repository_routes = Proc.new do
