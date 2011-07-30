@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/rdblue/grack.git
+  revision: c88d31c39c883ba603a2223de99b5b9db2b327b9
+  specs:
+    grack (0.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -102,6 +108,7 @@ DEPENDENCIES
   authlogic
   coderay
   delayed_job
+  grack!
   grit (~> 2.3)
   jquery-rails
   marker

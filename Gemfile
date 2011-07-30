@@ -21,6 +21,9 @@ gem "sqlite3-ruby", :require => "sqlite3" # development
 gem 'grit', '~> 2.3' # git
 # gem 'amp' # mercurial
 
+# git http server in rack
+gem 'grack', :git => 'git://github.com/rdblue/grack.git', :require => 'git_http'
+
 # background processing framework
 gem 'delayed_job'
 
