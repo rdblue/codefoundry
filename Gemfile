@@ -38,7 +38,7 @@ gem 'authlogic'
 gem 'will_paginate'
 
 # image processing
-gem 'paperclip', "2.3.4"
+gem 'paperclip'
 
 # syntax highlighting
 gem 'coderay'
