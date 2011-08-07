@@ -1,6 +1,6 @@
 require 'rack'
 require 'net/http'
-require 'streaming_http'
+require File.expand_path( '../streaming_http', __FILE__ )
 
 # A streaming proxy class, based on aniero's rack-streaming-proxy
 #
